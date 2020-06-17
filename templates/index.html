@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Todo App</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+	<div class="nav">
+		<center>
+			<h2>Todo Application</h2>
+		</center>
+	</div>
+	<br>
+	<section>
+		{% if not todos %}
+		<center>
+			<pre>No Todos Found</pre>
+		</center>
+		{% endif %}
+	</section>
+	<section>
+		<center>
+			<h2> Your Todos</h2>
+		{% for todo in todos%}
+			<li>{{ todo.todo}} | {{todo.is_complete}}</li>
+		{% endfor %}
+	</center>
+	</section>
+</body>
+</html>
