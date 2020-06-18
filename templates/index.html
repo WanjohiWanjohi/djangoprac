@@ -23,10 +23,26 @@
 	<section>
 		<center>
 			<h2> Your Todos</h2>
+
 		{% for todo in todos%}
-			<li>{{ todo.todo}} | {{todo.is_complete}}</li>
+		<form method="POST" action="{% url 'delete' todo.id %}">
+		{% csrf_token %}
+		<li>{{ todo.todo}} | {{todo.is_complete}}</li>
+			<li><input type="submit" value="delete"name="submit"></li>
+		</form>
+			
 		{% endfor %}
 	</center>
+	</section>
+	<section>
+		<center>
+			<form action="{% url 'index' %}" method="POST">
+				{% csrf_token %}
+				<input type="text" name="todo">
+				<input type="submit" name="submit" value="submit">
+				
+			</form>
+		</center>
 	</section>
 </body>
 </html>

@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from todoapp.views import index
+from todoapp.views import index , delete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index , name='index-page'),
+    path('', index , name='index'),
+    path('delete/<int:todo_id>/' , delete , name='delete')
 ]
