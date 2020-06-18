@@ -13,6 +13,7 @@
 		</center>
 	</div>
 	<br>
+	{% block content %}
 	<section>
 		{% if not todos %}
 		<center>
@@ -26,9 +27,20 @@
 
 		{% for todo in todos%}
 		<form method="POST" action="{% url 'delete' todo.id %}">
+
 		{% csrf_token %}
-		<li>{{ todo.todo}} | {{todo.is_complete}}</li>
-			<li><input type="submit" value="delete"name="submit"></li>
+
+		<li>{{ todo.todo}} 
+			{% if todo.is_complete %}
+				<pre>Completed</pre>
+			{% else %}
+			<pre>  NOT Completed</pre>
+			{% endif %}
+		</li>
+		
+		<input type="submit" value="Delete"name="delete">
+		<input type="submit" value="Mark as complete"name="complete">
+		<input type="submit" value="Update"name="update">
 		</form>
 			
 		{% endfor %}
@@ -44,5 +56,6 @@
 			</form>
 		</center>
 	</section>
+	{% endblock %}
 </body>
 </html>

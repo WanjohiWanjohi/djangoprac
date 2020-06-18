@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block content%}
+<form method="POST" action="{% url 'update' todo_id %}">
+	{% csrf_token %}
+	<input type="text" name="todo">
+	<input type="submit" name="update" value="Update">
+</form>
+{%endblock%}
